@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos - Clínica de Estética</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Clínica de Estética</h1>
+        <p>Agendamento de Atendimentos</p>
+    </header>
+
+    <main>
+        <h2>Novo Agendamento</h2>
+
+        {% with mensagens = get_flashed_messages() %}
+            {% for mensagem in mensagens %}
+                <p class="mensagem">{{ mensagem }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form action="/cadastrar_agendamento" method="POST">
+
+            <label for="cliente_id">Selecione o cliente:</label>
+            <select id="cliente_id" name="cliente_id" required>
+                <option value="">Escolha um cliente</option>
+                {% for cliente in clientes %}
+                    <option value="{{ cliente.id }}">
+                        {{ cliente.nome }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label for="servico_id">Selecione o serviço:</label>
+            <select id="servico_id" name="servico_id" required>
+                <option value="">Escolha um serviço</option>
+                {% for servico in servicos %}
+                    <option value="{{ servico.id }}">
+                        {{ servico.nome }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <label for="data">Data do atendimento:</label>
+            <input type="date" id="data" name="data" required>
+
+            <label for="horario">Horário:</label>
+            <input type="time" id="horario" name="horario" required>
+
+            <button type="submit">Confirmar Agendamento</button>
+
+        </form>
+
+        <p class="voltar">
+            <a href="/">Voltar ao início</a>
+        </p>
+    </main>
+
+</body>
+</html>

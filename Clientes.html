@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes - Clínica de Estética</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Clínica de Estética</h1>
+        <p>Cadastro de Clientes</p>
+    </header>
+
+    <main>
+        <h2>Registrar Novo Cliente</h2>
+
+        {% with mensagens = get_flashed_messages() %}
+            {% for mensagem in mensagens %}
+                <p class="mensagem">{{ mensagem }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form action="/cadastrar_cliente" method="POST">
+
+            <label for="nome">Nome completo:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite o nome do cliente" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="exemplo@email.com">
+
+            <button type="submit">Cadastrar Cliente</button>
+
+        </form>
+
+        <p class="voltar">
+            <a href="/">Voltar ao início</a>
+        </p>
+    </main>
+
+</body>
+</html>

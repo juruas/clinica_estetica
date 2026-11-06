@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Agendamento - Clínica de Estética</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Clínica de Estética</h1>
+        <p>Cuidado, beleza e bem-estar!</p>
+    </header>
+
+    <nav>
+        <a href="/">Início</a>
+        <a href="/clientes">Clientes</a>
+        <a href="/servicos">Serviços</a>
+        <a href="/agendamentos">Agendamentos</a>
+        <a href="/consultas">Consultas</a>
+    </nav>
+
+    <main>
+        <h2>Bem-vinda ao sistema de gerenciamento</h2>
+
+        <p>
+            Organize seus clientes, serviços e agendamentos
+            em um só lugar.
+        </p>
+
+        <section class="opcoes">
+
+            <div class="card">
+                <h3>Cadastro de Clientes</h3>
+                <p>Registre os dados dos clientes.</p>
+                <a href="/clientes">Acessar cadastro</a>
+            </div>
+
+            <div class="card">
+                <h3>Serviços e Procedimentos</h3>
+                <p>Cadastre os tratamentos da clínica.</p>
+                <a href="/servicos">Acessar serviços</a>
+            </div>
+
+            <div class="card">
+                <h3>Agendamentos</h3>
+                <p>Organize os horários dos atendimentos.</p>
+                <a href="/agendamentos">Acessar agendamentos</a>
+            </div>
+
+            <div class="card">
+                <h3>Consulta de Registros</h3>
+                <p>Visualize clientes, serviços e agendamentos cadastrados.</p>
+                <a href="/consultas">Consultar registros</a>
+            </div>
+
+        </section>
+    </main>
+</body>
+</html>

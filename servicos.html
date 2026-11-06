@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Serviços</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Clínica de Estética</h1>
+        <p>Cadastro de Serviços e Procedimentos</p>
+    </header>
+
+    <main>
+        <h2>Registrar Novo Serviço</h2>
+
+        {% with mensagens = get_flashed_messages() %}
+            {% for mensagem in mensagens %}
+                <p class="mensagem">{{ mensagem }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form action="/cadastrar_servico" method="POST">
+
+            <label for="nome">Nome do serviço:</label>
+            <input type="text" id="nome" name="nome"
+                   placeholder="Ex.: Limpeza de pele" required>
+
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao"
+                   placeholder="Descreva o procedimento">
+
+            <label for="preco">Preço (R$):</label>
+            <input type="number" id="preco" name="preco"
+                   placeholder="Ex.: 150.00" min="0.01"
+                   step="0.01" required>
+
+            <button type="submit">Cadastrar Serviço</button>
+
+        </form>
+
+        <p class="voltar">
+            <a href="/">Voltar ao início</a>
+        </p>
+    </main>
+
+</body>
+</html>

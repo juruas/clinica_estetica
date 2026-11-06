@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas - Clínica de Estética</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Clínica de Estética</h1>
+        <p>Consulta de Registros</p>
+    </header>
+
+    <main>
+        <h2>Clientes Cadastrados</h2>
+
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>E-mail</th>
+            </tr>
+
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.nome }}</td>
+                <td>{{ cliente.telefone }}</td>
+                <td>{{ cliente.email or '-' }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h2>Serviços Cadastrados</h2>
+
+        <table>
+            <tr>
+                <th>Serviço</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+            </tr>
+
+            {% for servico in servicos %}
+            <tr>
+                <td>{{ servico.nome }}</td>
+                <td>{{ servico.descricao or '-' }}</td>
+                <td>R$ {{ "%.2f"|format(servico.preco) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <h2>Agendamentos Realizados</h2>
+
+        <table>
+            <tr>
+                <th>Cliente</th>
+                <th>Serviço</th>
+                <th>Data</th>
+                <th>Horário</th>
+            </tr>
+
+            {% for agendamento in agendamentos %}
+            <tr>
+                <td>{{ agendamento.cliente }}</td>
+                <td>{{ agendamento.servico }}</td>
+                <td>{{ agendamento.data }}</td>
+                <td>{{ agendamento.horario }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p class="voltar">
+            <a href="/">Voltar ao início</a>
+        </p>
+    </main>
+
+</body>
+</html>
